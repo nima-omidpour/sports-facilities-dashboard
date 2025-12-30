@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #f8f8f8;
+  --bg-main: #ffffff;
+  --bg-card: #f8f8f8;
+  --bg-elevated: #3a4447;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --accent-primary: #007bff;
+  --accent-success: #2dc26c;
+  --border-muted: #9a9e9e;
+}
+
+.dark {
+  --background: #ffffff;
+  --foreground: #171717;
+  --bg-main: #0a1017;
+  --bg-card: #1a212b;
+  --bg-elevated: #3a4447;
+  --text-primary: #c2c2c2;
+  --text-secondary: #86888b;
+  --accent-primary: #ee5a20;
+  --accent-success: #2dc26c;
+  --border-muted: #9a9e9e;
+}
+
+@theme inline {
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-bg-main: var(--bg-main);
+  --color-bg-card: var(--bg-card);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-success: var(--accent-success);
+  --color-border-muted: var(--border-muted);
+  --font-sans: var(--font-vazir), system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body,
+html {
+  background: var(--bg-main);
+  color: var(--text-primary);
+  height: 100%;
+}

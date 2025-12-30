@@ -1,0 +1,74 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { LayoutDashboard, Calendar } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Route } from "@/types/owner/routes";
+
+const ROUTES: Route[] = [
+  {
+    name: "داشبورد",
+    href: "/owner/dashboard",
+    icon: <LayoutDashboard className="w-5 h-5" />,
+  },
+  {
+    name: "رزو ها",
+    href: "/owner/reservations",
+    icon: <Calendar className="w-5 h-5" />,
+  },
+  {
+    name: "تاریخ ها",
+    href: "/owner/calender",
+    icon: <Calendar className="w-5 h-5" />,
+  },
+];
+
+export default function SideBar() {
+  const pathname = usePathname();
+
+  return (
+    <div className="w-64 h-screen border-e border-border-muted bg-bg-card flex flex-col">
+      <div className="flex flex-col items-center mt-10">
+        <Link href="/owner/dashboard" className="flex flex-row gap-2">
+          <Image
+            className="rounded-full object-contain"
+            src="/logo.svg"
+            alt="logo"
+            width={54}
+            height={54}
+          />
+          <div className="flex flex-col">
+            <h1 className="text-lg font-semibold">داشبورد</h1>
+            <p className="text-sm text-muted-foreground">مدیریت مجموعه</p>
+          </div>
+        </Link>
+
+        <nav className="mt-10 w-full">
+          <ul className="flex flex-col items-center gap-4">
+            {ROUTES.map((route) => {
+              const isActive = pathname === route.href;
+
+              return (
+                <li key={route.href} className="w-[90%]">
+                  <Link
+                    href={route.href}
+                    className={`
+                      p-2 rounded-xl flex justify-center items-center gap-2
+                      transition-colors hover:bg-bg-main/50
+                      ${isActive ? "bg-bg-main" : ""}
+                    `}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {route.icon}
+                    <span>{route.name}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  );
+}
