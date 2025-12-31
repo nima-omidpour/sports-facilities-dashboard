@@ -1,4 +1,4 @@
-import { ThemeToggle } from "@/app/components/theme-toggle";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Dashboard() {
   return (

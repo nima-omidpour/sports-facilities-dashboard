@@ -35,7 +35,7 @@ export default function SideBar({
 
   return (
     <div
-      className={`w-64 h-screen z-150 border-e md:border-border-muted bg-bg-card md:flex md:flex-col md:relative fixed right-0 transition-transform duration-300 ease-in-out ${
+      className={`w-64 h-screen z-50 border-e md:border-border-muted bg-bg-card md:flex md:flex-col md:relative fixed right-0 transition-transform duration-300 ease-in-out ${
         isMenuOpen ? "translate-x-0 " : "translate-x-full"
       } md:translate-x-0`}
     >
