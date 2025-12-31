@@ -25,21 +25,54 @@ import {
   DropdownMenuSubContent,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 
-export default function Header() {
+export default function Header({
+  toggleMenu,
+  isMenuOpen,
+}: {
+  toggleMenu: () => void;
+  isMenuOpen: boolean;
+}) {
   const { setTheme } = useTheme();
 
   return (
-    <header className="h-20 w-full border-b border-border-muted bg-bg-card flex items-center justify-between px-8 select-none">
-      <div className="relative w-96">
+    <header className="h-20 w-full border-b border-border-muted bg-bg-card flex items-center justify-between px-4 md:px-8 select-none">
+      <div className="flex items-center gap-4">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="md:hidden relative w-10 h-10 rounded-xl hover:bg-bg-elevated/50 transition-colors"
+          onClick={toggleMenu}
+          aria-label={isMenuOpen ? "بستن منو" : "باز کردن منو"}
+        >
+          <div className="w-5 h-5 flex flex-col justify-center items-center">
+            <span
+              className={`block w-5 h-0.5 bg-text-primary rounded-full transition-all duration-300 ${
+                isMenuOpen ? "rotate-45 translate-y-[1px]" : "-translate-y-1"
+              }`}
+            />
+            <span
+              className={`block w-5 h-0.5 bg-text-primary rounded-full transition-all duration-300 ${
+                isMenuOpen ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`block w-5 h-0.5 bg-text-primary rounded-full transition-all duration-300 ${
+                isMenuOpen ? "-rotate-45 -translate-y-[1px]" : "translate-y-1"
+              }`}
+            />
+          </div>
+        </Button>
+      </div>
+
+      {/* <div className="relative w-96">
         <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-secondary opacity-70 pointer-events-none" />
         <Input
           type="text"
           placeholder="جستجوی رزروها، مشتریان یا..."
           className="bg-bg-elevated/50 border-none pr-12 py-2.5 rounded-xl text-text-primary placeholder:text-text-secondary/70 text-sm font-medium focus-visible:ring-1 focus-visible:ring-accent-primary"
         />
-      </div>
+      </div> */}
 
       <div className="flex items-center gap-4">
         <Button

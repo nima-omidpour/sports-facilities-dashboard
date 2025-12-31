@@ -24,11 +24,21 @@ const ROUTES: Route[] = [
   },
 ];
 
-export default function SideBar() {
+export default function SideBar({
+  isMenuOpen,
+  toggleMenu,
+}: {
+  isMenuOpen: boolean;
+  toggleMenu: () => void;
+}) {
   const pathname = usePathname();
 
   return (
-    <div className="w-64 h-screen border-e border-border-muted bg-bg-card flex flex-col">
+    <div
+      className={`w-64 h-screen z-150 border-e md:border-border-muted bg-bg-card md:flex md:flex-col md:relative fixed right-0 transition-transform duration-300 ease-in-out ${
+        isMenuOpen ? "translate-x-0 " : "translate-x-full"
+      } md:translate-x-0`}
+    >
       <div className="flex flex-col items-center mt-10">
         <Link href="/owner/dashboard" className="flex flex-row gap-2">
           <Image
@@ -50,7 +60,11 @@ export default function SideBar() {
               const isActive = pathname === route.href;
 
               return (
-                <li key={route.href} className="w-[90%]">
+                <li
+                  onClick={() => toggleMenu()}
+                  key={route.href}
+                  className="w-[90%]"
+                >
                   <Link
                     href={route.href}
                     className={`
