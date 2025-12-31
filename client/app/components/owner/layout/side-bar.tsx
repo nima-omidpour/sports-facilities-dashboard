@@ -54,9 +54,13 @@ export default function SideBar() {
                   <Link
                     href={route.href}
                     className={`
-                      p-2 rounded-xl flex justify-center items-center gap-2
-                      transition-colors hover:bg-bg-main/50
-                      ${isActive ? "bg-bg-main" : ""}
+                      p-3 rounded-xl flex justify-start items-center gap-3
+                      transition-colors hover:bg-bg-main/50 font-medium
+                      ${
+                        isActive
+                          ? "bg-bg-main shadow-sm text-accent-primary"
+                          : "text-text-secondary hover:text-text-primary"
+                      }
                     `}
                     aria-current={isActive ? "page" : undefined}
                   >
